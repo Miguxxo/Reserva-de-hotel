@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FuncionarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use App\Http\Controllers\ClienteController;
 |
 */
 
-Route::get('/',[ClienteController::class,'showHome']);
-Route::get('/cadastro-cliente',[ClienteController::class,'showFormularioCadastro']);
-Route::get('/cadastro-funcionario',[ClienteController::class,'showFormularioCadastro']);
+Route::get('/',[ClienteController::class,'showHome'])->name('home');
+Route::get('/cadastro-cliente',[ClienteController::class,'showFormularioCadastro'])->name('show-formulario-cadastro');
+Route::post('/cadastro-cliente',[ClienteController::class,'cadCliente'])->name('envia-banco-cliente');
+Route::get('/cadastro-funcionario',[FuncionarioController::class,'showFormularioCadastro']);
+Route::post('/cadastro-funcionario',[FuncionarioController::class,'cadFuncionario'])->name('envia-banco-funcionario');
